@@ -6,6 +6,116 @@
     android:layout_height="match_parent"
     android:background="@drawable/inscription_entreprise">
 
+    <EditText
+        android:id="@+id/nom_entreprise"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Nom De L'entreprise"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_entreprise_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <EditText
+        android:id="@+id/numero"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Numéro"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_entite_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nom_entreprise"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Adresse Email"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nom_entreprise"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <EditText
+        android:id="@+id/adresse"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Adresse"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_house_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nom_entreprise"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <EditText
+        android:id="@+id/telephone"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Numéro De Téléphone"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_phone_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nom_entreprise"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
+
+    <EditText
+        android:id="@+id/mdp"
+        android:layout_width="343dp"
+        android:layout_height="25dp"
+        android:hint="Mot De Passe"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nom_entreprise"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604" />
+
     <Button
         android:id="@+id/bouton_retour"
         android:layout_width="wrap_content"
@@ -23,80 +133,14 @@
         android:id="@+id/bouton_valider"
         android:layout_width="118dp"
         android:layout_height="58dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="200dp"
-        android:text="Valider"
+        android:layout_marginEnd="52dp"
         android:background="@drawable/btn_bg"
+        android:text="Valider"
         android:textColor="#FF8C00"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress3"
-        android:layout_width="343dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="232dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="339dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="104dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="339dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="168dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <EditText
-        android:id="@+id/editTextTextPassword3"
-        android:layout_width="339dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="300dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress3"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="339dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="372dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
-
-    <EditText
-        android:id="@+id/editTextTextPassword4"
-        android:layout_width="343dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="432dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@null"/>
+        app:layout_constraintVertical_bias="0.717" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

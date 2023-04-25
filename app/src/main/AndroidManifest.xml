@@ -25,6 +25,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name=".InscriptionChoix"/>
+        <activity android:name=".Connexion"/>
+        <activity android:name=".InscriptionChercheur"/>
+        <activity android:name=".InscriptionEntreprise"/>
     </application>
 
 </manifest>

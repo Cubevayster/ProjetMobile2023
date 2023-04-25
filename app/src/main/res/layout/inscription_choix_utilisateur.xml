@@ -10,13 +10,15 @@
         android:id="@+id/recherche"
         android:layout_width="118dp"
         android:layout_height="87dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="296dp"
-        android:text="Recherche d'intérim"
         android:background="@drawable/btn_bg"
+        android:text="Recherche d'intérim"
         android:textColor="#FF8C00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445" />
 
     <Button
         android:id="@+id/employeur"
@@ -44,10 +46,13 @@
         android:id="@+id/retour"
         android:layout_width="92dp"
         android:layout_height="50dp"
-        android:layout_marginTop="92dp"
         android:background="@drawable/btn_bg"
         android:text="Retour"
         android:textColor="#FF8C00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/recherche"
-        app:layout_constraintTop_toBottomOf="@+id/recherche" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.641" />
 </androidx.constraintlayout.widget.ConstraintLayout>
