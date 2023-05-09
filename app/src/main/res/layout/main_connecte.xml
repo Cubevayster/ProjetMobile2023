@@ -6,44 +6,44 @@
     android:layout_height="match_parent"
     android:background="@drawable/main_connecte">
 
-
     <Button
-        android:id="@+id/inscription"
+        android:id="@+id/mon_compte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
-        android:text="Inscription"
+        android:text="Mon compte"
         android:textColor="#FF8C00"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/connexion"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <Button
-        android:id="@+id/connexion"
+        android:id="@+id/deconnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="204dp"
         android:background="@drawable/btn_bg"
-        android:text="Connexion"
+        android:text="Déconnexion"
         android:textColor="#FF8C00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/inscription"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <!--<TextView
-        android:id="@+id/anonyme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anonyme"
-        android:textColor="#FFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />-->
+        app:layout_constraintVertical_bias="0.112" />
+
+    <TextView
+        android:id="@+id/utilisateur_nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043"
+        android:textColor="#FFF"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

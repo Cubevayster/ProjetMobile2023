@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786022848409",
+    "project_id": "jobtempo-2934d",
+    "storage_bucket": "jobtempo-2934d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786022848409:android:418a9cc3a33eddba4ee508",
+        "android_client_info": {
+          "package_name": "com.example.jobtempo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786022848409-v5nc3lob444sea0oko6o71vk4me81413.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXO4fwbeePGs1Wp4plJQLGhKRcV7dbn2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786022848409-v5nc3lob444sea0oko6o71vk4me81413.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
