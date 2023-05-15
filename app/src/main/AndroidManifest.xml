@@ -31,6 +31,7 @@
         <activity android:name=".InscriptionChercheur"/>
         <activity android:name=".InscriptionEntreprise"/>
         <activity android:name=".MainConnecte"/>
+        <activity android:name=".MainConnecteEntreprise"/>
     </application>
 
 </manifest>
