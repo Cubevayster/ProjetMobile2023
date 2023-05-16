@@ -7,7 +7,7 @@
     android:background="@drawable/main_connecte">
 
     <Button
-        android:id="@+id/ajout_offre_button"
+        android:id="@+id/ajout_offre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.884" />
 
     <Button
-        android:id="@+id/gestion_offre_button"
+        android:id="@+id/gestion_offre"
         android:layout_width="92dp"
         android:layout_height="51dp"
         android:background="@drawable/btn_bg"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.131" />
 
     <Button
-        android:id="@+id/mon_compte"
+        android:id="@+id/mon_compte_entreprise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.042" />
 
     <Button
-        android:id="@+id/deconnexion"
+        android:id="@+id/deconnexion_entreprise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
