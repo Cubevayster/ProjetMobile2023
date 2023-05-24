@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Connexion extends AppCompatActivity {
     Button inscription;
@@ -91,9 +96,40 @@ public class Connexion extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Connexion.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
-                            startActivity(intent);
-                            finish();
+
+                            String userId = mAuth.getCurrentUser().getUid();
+                            DatabaseReference userRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(userId);
+
+                            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    // Vérifier si l'utilisateur est un chercheur
+                                    boolean estChercheur = dataSnapshot.child("isChercheur").getValue(Boolean.class);
+                                    System.out.println(estChercheur);
+
+                                    if (estChercheur) {
+                                        // Rediriger vers l'activité pour les chercheurs
+                                        Intent intentChercheur = new Intent(getApplicationContext(), MainConnecte.class);
+                                        startActivity(intentChercheur);
+                                    } else {
+                                        // Rediriger vers l'activité pour les non-chercheurs
+                                        Intent intentNonChercheur = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
+                                        startActivity(intentNonChercheur);
+                                    }
+
+                                    // Terminer l'activité de connexion
+                                    finish();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    // Gérer l'erreur d'accès à la base de données
+                                    Toast.makeText(Connexion.this, "Erreur : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            //Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
+                            //startActivity(intent);
+                            //finish();
                         } else {
                             Toast.makeText(Connexion.this, "Connexion échouée, veuillez vérifier votre email et mot de passe", Toast.LENGTH_SHORT).show();
                         }
