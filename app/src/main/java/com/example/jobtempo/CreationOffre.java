@@ -84,6 +84,8 @@ public class CreationOffre extends Activity {
                             Toast.makeText(getApplicationContext(), "Offre crée avec succès", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
+                            //intent.putExtra("nomOffre", nomOffre);
+                            //setResult(RESULT_OK, intent);
                             startActivity(intent);
                             finish();
                         }
