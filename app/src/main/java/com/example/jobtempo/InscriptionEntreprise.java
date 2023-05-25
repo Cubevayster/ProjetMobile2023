@@ -53,7 +53,7 @@ public class InscriptionEntreprise extends AppCompatActivity {
         Telephone = findViewById(R.id.telephone);
         MDP = findViewById(R.id.mdp);
 
-        retour = findViewById(R.id.bouton_retour);
+        //retour = findViewById(R.id.bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -32,6 +32,9 @@
         <activity android:name=".InscriptionEntreprise"/>
         <activity android:name=".MainConnecte"/>
         <activity android:name=".MainConnecteEntreprise"/>
+        <activity android:name=".ChercheurInfo"/>
+        <activity android:name=".EntrepriseInfo"/>
+        <activity android:name=".CreationOffre"/>
     </application>
 
 </manifest>
