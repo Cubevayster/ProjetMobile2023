@@ -7,8 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainConnecteEntreprise extends Activity {
 
@@ -19,11 +27,20 @@ public class MainConnecteEntreprise extends Activity {
 
     LinearLayout layoutScrollView;
 
-    private static final int REQUEST_CODE_AJOUT_OFFRE = 1;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_connecte_entreprise);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null) {
+            // L'utilisateur n'est pas connecté, effectuer la gestion appropriée
+            finish();
+        }
+
+        String userId = currentUser.getUid();
+        DatabaseReference offreRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers");
+        Query offreQuery = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers").orderByChild("idDepositaire").equalTo(userId);
 
         monCompte = findViewById(R.id.mon_compte_entreprise);
         gestionOffres = findViewById(R.id.gestion_offre);
@@ -60,26 +77,36 @@ public class MainConnecteEntreprise extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreationOffre.class);
                 startActivity(intent);
-                //startActivityForResult(intent, REQUEST_CODE_AJOUT_OFFRE);
                 finish();
             }
         });
-    }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        offreQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Effacer le contenu de la ScrollView
+                layoutScrollView.removeAllViews();
 
-        if (requestCode == REQUEST_CODE_AJOUT_OFFRE && resultCode == RESULT_OK) {
-            if (data != null && data.hasExtra("nomOffre")) {
-                String nomOffre = data.getStringExtra("nomOffre");
-                // Ajouter un élément (TextView + bouton) à votre ScrollView (LinearLayout) avec le nom de l'offre créée
-                LinearLayout linearLayout = findViewById(R.id.layoutScrollView);
-                TextView textView = new TextView(this);
-                textView.setText(nomOffre);
-                // Ajouter le TextView au LinearLayout
-                linearLayout.addView(textView);
+                // Parcourir les offres d'emploi de l'entreprise
+                for (DataSnapshot offreSnapshot : dataSnapshot.getChildren()) {
+                    // Récupérer les informations de l'offre d'emploi
+                    String nomOffre = offreSnapshot.child("nomOffre").getValue(String.class);
+
+                    // Créer un TextView pour afficher le nom de l'offre d'emploi
+                    TextView textView = new TextView(MainConnecteEntreprise.this);
+                    textView.setText(nomOffre);
+
+                    // Ajouter le TextView à la ScrollView
+                    layoutScrollView.addView(textView);
+                }
             }
-        }
-    }*/
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Gérer l'erreur de lecture des données
+                Toast.makeText(getApplicationContext(), "Erreur lors de la récupération des données", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }

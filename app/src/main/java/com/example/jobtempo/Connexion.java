@@ -37,9 +37,38 @@ public class Connexion extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
-            startActivity(intent);
-            finish();
+            String userId = mAuth.getCurrentUser().getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(userId);
+
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Vérifier si l'utilisateur est un chercheur
+                    boolean estChercheur = dataSnapshot.child("isChercheur").getValue(Boolean.class);
+
+                    if (estChercheur) {
+                        // Rediriger vers l'activité pour les chercheurs
+                        Intent intentChercheur = new Intent(getApplicationContext(), MainConnecte.class);
+                        startActivity(intentChercheur);
+                    } else {
+                        // Rediriger vers l'activité pour les non-chercheurs
+                        Intent intentNonChercheur = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
+                        startActivity(intentNonChercheur);
+                    }
+
+                    // Terminer l'activité de connexion
+                    finish();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Gérer l'erreur d'accès à la base de données
+                    Toast.makeText(Connexion.this, "Erreur : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            //Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
+            //startActivity(intent);
+            //finish();
         }
     }
 
@@ -105,7 +134,6 @@ public class Connexion extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     // Vérifier si l'utilisateur est un chercheur
                                     boolean estChercheur = dataSnapshot.child("isChercheur").getValue(Boolean.class);
-                                    System.out.println(estChercheur);
 
                                     if (estChercheur) {
                                         // Rediriger vers l'activité pour les chercheurs
