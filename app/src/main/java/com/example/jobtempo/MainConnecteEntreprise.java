@@ -89,15 +89,43 @@ public class MainConnecteEntreprise extends Activity {
 
                 // Parcourir les offres d'emploi de l'entreprise
                 for (DataSnapshot offreSnapshot : dataSnapshot.getChildren()) {
+                    // Récupérer l'identifiant de l'offre d'emploi
+                    String offreId = offreSnapshot.getKey();
+                    System.out.println("ID OFFRE : " + offreId);
+
                     // Récupérer les informations de l'offre d'emploi
                     String nomOffre = offreSnapshot.child("nomOffre").getValue(String.class);
 
-                    // Créer un TextView pour afficher le nom de l'offre d'emploi
-                    TextView textView = new TextView(MainConnecteEntreprise.this);
-                    textView.setText(nomOffre);
+                    // Créer un bouton pour afficher le nom de l'offre d'emploi
+                    Button offreButton = new Button(MainConnecteEntreprise.this);
+                    offreButton.setText(nomOffre);
+                    offreButton.setTag(offreId);
 
-                    // Ajouter le TextView à la ScrollView
-                    layoutScrollView.addView(textView);
+                    offreButton.setBackgroundResource(R.drawable.btn_bg);
+
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    int margin = getResources().getDimensionPixelSize(R.dimen.button_margin); // Récupérer la valeur de la marge à partir des ressources
+                    layoutParams.setMargins(margin, margin, margin, margin);
+                    offreButton.setLayoutParams(layoutParams);
+
+                    offreButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // Récupérer l'identifiant de l'offre à partir du tag du bouton
+                            String offreId = (String) view.getTag();
+
+                            // Rediriger vers l'activité RecapOffre en passant l'identifiant de l'offre
+                            Intent intent = new Intent(getApplicationContext(), RecapOffre.class);
+                            intent.putExtra("offreId", offreId);
+                            startActivity(intent);
+                        }
+                    });
+
+                    // Ajouter le bouton à la ScrollView
+                    layoutScrollView.addView(offreButton);
                 }
             }
 

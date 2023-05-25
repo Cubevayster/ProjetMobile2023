@@ -11,6 +11,10 @@ public class OffreInfo {
     public String remunerationString;
     public String descriptionString;
 
+    public OffreInfo(){
+
+    }
+
     public OffreInfo(String idDepositaire, String nomOffre, String employeurString, String metierCible, String localisationString, String periodeString, String remunerationString, String descriptionString){
         this.idDepositaire = idDepositaire;
         this.nomOffre = nomOffre;
