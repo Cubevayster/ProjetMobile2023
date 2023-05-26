@@ -42,6 +42,7 @@
         <activity android:name=".ModifierMDP"/>
         <activity android:name=".MonCompteEntreprise"/>
         <activity android:name=".ModifierEntreprise"/>
+        <activity android:name=".ModifierOffre"/>
     </application>
 
 </manifest>

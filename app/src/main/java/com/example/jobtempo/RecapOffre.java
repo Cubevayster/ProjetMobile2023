@@ -25,13 +25,14 @@ public class RecapOffre extends Activity {
     TextView descriptionView;
 
     Button candidature_button;
-
+    Button modifier;
     Button retour_button;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recap_offre);
 
+        modifier = findViewById(R.id.modifier);
         nomOffre = findViewById(R.id.nomOffre);
         employeurView = findViewById(R.id.employeurView);
         metierCibleView = findViewById(R.id.metierCibleView);
@@ -43,6 +44,7 @@ public class RecapOffre extends Activity {
         candidature_button = findViewById(R.id.candidature_button);
 
         String offreId = getIntent().getStringExtra("offreId");
+        modifier.setTag(offreId);
 
         DatabaseReference offreRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers");
 
@@ -95,6 +97,16 @@ public class RecapOffre extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        modifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ModifierOffre.class);
+                intent.putExtra("offreId", offreId);
                 startActivity(intent);
                 finish();
             }
