@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,11 +27,15 @@ public class MainConnecteEntreprise extends Activity {
     Button deconnexion;
     Button ajoutOffre;
 
+    TextView titre;
+
     LinearLayout layoutScrollView;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_connecte_entreprise);
+        titre = findViewById(R.id.entreprise_nom);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -38,6 +44,8 @@ public class MainConnecteEntreprise extends Activity {
             finish();
         }
 
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(currentUser.getUid());
         String userId = currentUser.getUid();
         DatabaseReference offreRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers");
         Query offreQuery = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers").orderByChild("idDepositaire").equalTo(userId);
@@ -48,10 +56,25 @@ public class MainConnecteEntreprise extends Activity {
         ajoutOffre = findViewById(R.id.ajout_offre);
         layoutScrollView = findViewById(R.id.layoutScrollView);
 
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String nom = dataSnapshot.child("nom").getValue(String.class);
+                titre.setText(nom);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Gérer l'erreur d'accès à la base de données
+                Toast.makeText(MainConnecteEntreprise.this, "Erreur : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
         monCompte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // vers infos du compte
+                Intent intent = new Intent(getApplicationContext(), MonCompteEntreprise.class);
+                startActivity(intent);
+                finish();
             }
         });
 

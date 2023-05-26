@@ -40,6 +40,8 @@
         <activity android:name=".MonCompteChercheur"/>
         <activity android:name=".ModifierChercheur"/>
         <activity android:name=".ModifierMDP"/>
+        <activity android:name=".MonCompteEntreprise"/>
+        <activity android:name=".ModifierEntreprise"/>
     </application>
 
 </manifest>
