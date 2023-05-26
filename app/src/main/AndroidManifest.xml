@@ -35,6 +35,7 @@
         <activity android:name=".ChercheurInfo"/>
         <activity android:name=".EntrepriseInfo"/>
         <activity android:name=".CreationOffre"/>
+        <activity android:name=".Candidature"/>
         <activity android:name=".RecapOffre"/>
         <activity android:name=".RecapOffreChercheur"/>
         <activity android:name=".MonCompteChercheur"/>

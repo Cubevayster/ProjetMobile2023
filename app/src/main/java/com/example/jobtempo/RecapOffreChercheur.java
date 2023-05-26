@@ -88,7 +88,9 @@ public class RecapOffreChercheur extends Activity {
         candidature_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // redirige vers l'écran de la candidature
+                Intent intent = new Intent(getApplicationContext(), Candidature.class);
+                startActivity(intent);
+                finish();
             }
         });
 
