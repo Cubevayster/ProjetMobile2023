@@ -36,6 +36,7 @@
         <activity android:name=".EntrepriseInfo"/>
         <activity android:name=".CreationOffre"/>
         <activity android:name=".RecapOffre"/>
+        <activity android:name=".RecapOffreChercheur"/>
         <activity android:name=".MonCompteChercheur"/>
         <activity android:name=".ModifierChercheur"/>
     </application>

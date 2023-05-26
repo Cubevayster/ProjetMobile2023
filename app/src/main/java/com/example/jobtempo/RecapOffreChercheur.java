@@ -14,7 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class RecapOffre extends Activity {
+public class RecapOffreChercheur extends Activity {
+
 
     TextView nomOffre;
     TextView employeurView;
@@ -30,7 +31,7 @@ public class RecapOffre extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recap_offre);
+        setContentView(R.layout.recap_offre_chercheur);
 
         nomOffre = findViewById(R.id.nomOffre);
         employeurView = findViewById(R.id.employeurView);
@@ -87,18 +88,17 @@ public class RecapOffre extends Activity {
         candidature_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // redirige vers l'écran des candidatures
+                // redirige vers l'écran de la candidature
             }
         });
 
         retour_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
+                Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
-
 }
