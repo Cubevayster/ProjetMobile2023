@@ -118,7 +118,9 @@ public class ModifierChercheur extends AppCompatActivity {
         modifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //modifier
+                Intent intent = new Intent(ModifierChercheur.this, ModifierMDP.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
