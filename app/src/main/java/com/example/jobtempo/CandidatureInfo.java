@@ -1,6 +1,8 @@
 package com.example.jobtempo;
 
-public class CandidatureInfo {
+import java.io.Serializable;
+
+public class CandidatureInfo implements Serializable {
     public String offreId;
     public String nomFamille;
     public String prenom;
@@ -34,5 +36,21 @@ public class CandidatureInfo {
     public String getPrenom(){
         return this.prenom;
     }
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public String getAdresse(){ return this.adresse; }
+
+    public String getDateNaissance(){ return this.dateNaissance; }
+
+    public String getTelephone(){ return this.telephone; }
+
+    public String getCvFileId(){ return this.cvFileId; }
+
+    public String getLmFileId(){ return this.lmFileId; }
+
+
 
 }

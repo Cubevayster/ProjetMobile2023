@@ -70,10 +70,10 @@ public class CandidatureEntreprise extends Activity {
                             @Override
                             public void onClick(View view) {
                                 // Rediriger vers une autre activité en transmettant l'offreId et l'instance de CandidatureInfo
-                                //Intent intent = new Intent(CandidatureEntreprise.this, AutreActivite.class);
-                                //intent.putExtra("offreId", offreId);
-                                //intent.putExtra("candidatureInfo", candidatureInfo);
-                                //startActivity(intent);
+                                Intent intent = new Intent(CandidatureEntreprise.this, VoirCandidature.class);
+                                intent.putExtra("offreId", offreId);
+                                intent.putExtra("candidatureInfo", candidatureInfo);
+                                startActivity(intent);
                             }
                         });
 
