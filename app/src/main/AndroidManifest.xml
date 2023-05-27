@@ -31,7 +31,9 @@
         <activity android:name=".Connexion"/>
         <activity android:name=".InscriptionChercheur"/>
         <activity android:name=".InscriptionEntreprise"/>
-        <activity android:name=".MainConnecte"/>
+        <activity android:name=".MainConnecte"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
         <activity android:name=".MainConnecteEntreprise"/>
         <activity android:name=".ChercheurInfo"/>
         <activity android:name=".EntrepriseInfo"/>
