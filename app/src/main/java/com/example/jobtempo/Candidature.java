@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,9 @@ public class Candidature extends Activity {
     Uri lmUri;
     String offreId;
     String userId;
+    TextView name;
+    FirebaseUser user;
+    FirebaseAuth auth;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,13 @@ public class Candidature extends Activity {
 
         // Obtenir l'ID de l'offre à partir de l'intent
         Intent intent = getIntent();
-        offreId = intent.getStringExtra("offreId");
+        name = findViewById(R.id.name);
+
+        offreId = getIntent().getStringExtra("offreId");
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        DatabaseReference userRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(user.getUid());
 
         // Obtenir l'ID de l'utilisateur
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -100,6 +110,21 @@ public class Candidature extends Activity {
                 Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String prenom = dataSnapshot.child("prenom").getValue(String.class);
+                String nom = dataSnapshot.child("nomFamille").getValue(String.class);
+                name.setText(prenom + " " + nom);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Gérer l'erreur d'accès à la base de données
+                Toast.makeText(Candidature.this, "Erreur : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

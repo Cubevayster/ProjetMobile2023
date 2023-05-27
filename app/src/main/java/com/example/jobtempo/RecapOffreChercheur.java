@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,11 +28,15 @@ public class RecapOffreChercheur extends Activity {
     TextView periodeView;
     TextView remunerationView;
     TextView descriptionView;
+    TextView name;
 
     Button candidature_button;
 
     Button retour_button;
     String offreId;
+
+    FirebaseUser user;
+    FirebaseAuth auth;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,9 +51,13 @@ public class RecapOffreChercheur extends Activity {
         descriptionView = findViewById(R.id.descriptionView);
         retour_button = findViewById(R.id.retour_button);
         candidature_button = findViewById(R.id.candidature_button);
+        name = findViewById(R.id.name);
 
         offreId = getIntent().getStringExtra("offreId");
 
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        DatabaseReference userRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(user.getUid());
         DatabaseReference offreRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers");
 
         // Effectuer une requête pour récupérer les informations de l'offre spécifiée
@@ -83,6 +95,21 @@ public class RecapOffreChercheur extends Activity {
             public void onCancelled(DatabaseError databaseError) {
                 // Gérer l'erreur de lecture des données
                 Toast.makeText(getApplicationContext(), "Erreur lors de la récupération des données", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String prenom = dataSnapshot.child("prenom").getValue(String.class);
+                String nom = dataSnapshot.child("nomFamille").getValue(String.class);
+                name.setText(prenom + " " + nom);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Gérer l'erreur d'accès à la base de données
+                Toast.makeText(RecapOffreChercheur.this, "Erreur : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
