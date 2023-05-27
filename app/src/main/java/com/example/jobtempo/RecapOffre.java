@@ -27,6 +27,7 @@ public class RecapOffre extends Activity {
     Button candidature_button;
     Button modifier;
     Button retour_button;
+    String offreId;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class RecapOffre extends Activity {
         retour_button = findViewById(R.id.retour_button);
         candidature_button = findViewById(R.id.candidature_button);
 
-        String offreId = getIntent().getStringExtra("offreId");
+        offreId = getIntent().getStringExtra("offreId");
         modifier.setTag(offreId);
 
         DatabaseReference offreRef = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers");
@@ -89,7 +90,9 @@ public class RecapOffre extends Activity {
         candidature_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // redirige vers l'écran des candidatures
+                Intent intent = new Intent(getApplicationContext(), CandidatureEntreprise.class);
+                intent.putExtra("offreId", offreId);
+                startActivity(intent);
             }
         });
 

@@ -11,6 +11,10 @@ public class CandidatureInfo {
     public String cvFileId;
     public String lmFileId;
 
+    public CandidatureInfo(){
+        // Requis pour la désérialisation depuis Firebase
+    }
+
     public CandidatureInfo(String offreId, String nomFamille, String prenom, String email, String adresse, String dateNaissance, String telephone, String cvFileId, String lmFileId){
         this.offreId = offreId;
         this.nomFamille = nomFamille;
@@ -21,6 +25,14 @@ public class CandidatureInfo {
         this.telephone = telephone;
         this.cvFileId = cvFileId;
         this.lmFileId = lmFileId;
+    }
+
+    public String getNom(){
+        return this.nomFamille;
+    }
+
+    public String getPrenom(){
+        return this.prenom;
     }
 
 }

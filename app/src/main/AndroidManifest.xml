@@ -45,6 +45,7 @@
         <activity android:name=".MonCompteEntreprise"/>
         <activity android:name=".ModifierEntreprise"/>
         <activity android:name=".ModifierOffre"/>
+        <activity android:name=".VoirCandidature"/>
     </application>
 
 </manifest>
