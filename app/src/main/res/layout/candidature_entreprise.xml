@@ -10,7 +10,7 @@
         android:id="@+id/nomOffre"
         android:layout_width="235dp"
         android:layout_height="44dp"
-        android:text="TextView"
+        android:text="Candidatures"
         android:textSize="35sp"
         android:textColor="@color/white"
         android:gravity="center"
