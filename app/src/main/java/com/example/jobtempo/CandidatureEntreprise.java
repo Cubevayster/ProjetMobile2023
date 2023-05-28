@@ -2,6 +2,7 @@ package com.example.jobtempo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -66,6 +67,9 @@ public class CandidatureEntreprise extends Activity {
                         // Créer un bouton "Voir" pour la candidature
                         Button voirButton = new Button(getApplicationContext());
                         voirButton.setText("Voir");
+                        voirButton.setBackgroundResource(R.drawable.btn_bg);
+                        voirButton.setTextColor(getResources().getColor(R.color.orange));
+                        voirButton.setTypeface(null, Typeface.BOLD);
                         voirButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
