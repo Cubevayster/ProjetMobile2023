@@ -31,6 +31,7 @@ public class ModifierOffre extends Activity {
 
     Button valider;
     Button retour;
+    Button supprimer;
 
     FirebaseAuth mAuth;
     FirebaseDatabase linkData = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app");
@@ -38,7 +39,7 @@ public class ModifierOffre extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.creation_offre);
+        setContentView(R.layout.modifier_offre);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -52,6 +53,7 @@ public class ModifierOffre extends Activity {
 
         valider = findViewById(R.id.bouton_valider);
         retour = findViewById(R.id.bouton_retour);
+        supprimer = findViewById(R.id.bouton_suppr);
 
         String offreId = getIntent().getStringExtra("offreId");
 
@@ -121,6 +123,27 @@ public class ModifierOffre extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecapOffre.class);
                 intent.putExtra("offreId", offreId);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        supprimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                offreRef.child(offreId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        dataSnapshot.getRef().removeValue();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Gérer l'erreur de lecture des données
+                        Toast.makeText(getApplicationContext(), "Erreur lors de la récupération des données", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Intent intent = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
                 startActivity(intent);
                 finish();
             }

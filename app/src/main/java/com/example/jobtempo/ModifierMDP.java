@@ -95,9 +95,9 @@ public class ModifierMDP extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    /*Intent intent = new Intent(ModifierMDP.this, MonCompteEntreprise.class);
+                    Intent intent = new Intent(ModifierMDP.this, MonCompteEntreprise.class);
                     startActivity(intent);
-                    finish();*/
+                    finish();
                 }
             }
         });
@@ -110,9 +110,9 @@ public class ModifierMDP extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
-                    /*Intent intent = new Intent(ModifierMDP.this, MonCompteEntreprise.class);
+                    Intent intent = new Intent(ModifierMDP.this, MonCompteEntreprise.class);
                     startActivity(intent);
-                    finish();*/
+                    finish();
                 }
             }
         });

@@ -21,20 +21,6 @@
         app:layout_constraintVertical_bias="0.884" />
 
     <Button
-        android:id="@+id/gestion_offre"
-        android:layout_width="92dp"
-        android:layout_height="51dp"
-        android:background="@drawable/btn_bg"
-        android:text="Gérer mes offres"
-        android:textColor="#FF8C00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131" />
-
-    <Button
         android:id="@+id/mon_compte_entreprise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <TextView
         android:id="@+id/entreprise_nom"

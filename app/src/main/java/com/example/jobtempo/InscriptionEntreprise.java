@@ -93,7 +93,7 @@ public class InscriptionEntreprise extends AppCompatActivity {
 
                             mDatabase.child(user.getUid()).setValue(newUser);
 
-                            Intent intent = new Intent(getApplicationContext(), MainConnecte.class);
+                            Intent intent = new Intent(getApplicationContext(), MainConnecteEntreprise.class);
                             startActivity(intent);
                             finish();
                         } else {
