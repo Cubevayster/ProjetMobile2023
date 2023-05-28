@@ -51,7 +51,6 @@ public class MainConnecteEntreprise extends Activity {
         Query offreQuery = FirebaseDatabase.getInstance("https://jobtempo-2934d-default-rtdb.europe-west1.firebasedatabase.app").getReference("Offers").orderByChild("idDepositaire").equalTo(userId);
 
         monCompte = findViewById(R.id.mon_compte_entreprise);
-        gestionOffres = findViewById(R.id.gestion_offre);
         deconnexion = findViewById(R.id.deconnexion_entreprise);
         ajoutOffre = findViewById(R.id.ajout_offre);
         layoutScrollView = findViewById(R.id.layoutScrollView);
