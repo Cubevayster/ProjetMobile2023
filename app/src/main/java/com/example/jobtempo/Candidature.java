@@ -91,12 +91,21 @@ public class Candidature extends Activity {
                 if (cvUri != null && lmUri != null){
                     // Envoyer le fichier à Firebase Storage
 
-                    cvUploadFileToStorage(cvUri);
-                    lmUploadFileToStorage(lmUri);
+                    //TEST
+                    // Générer les fileName avant l'appel
+                    String cvFilename = UUID.randomUUID().toString();
+                    String lmFilename = UUID.randomUUID().toString();
+
+                    cvUploadFileToStorage(cvUri, cvFilename);
+                    lmUploadFileToStorage(lmUri, lmFilename);
+
+                    //cvUploadFileToStorage(cvUri);
+                    //lmUploadFileToStorage(lmUri);
 
                     // Envoyer les données personnelles du candidat
                     // LES IDS DU CV ET DE LA LM SONT L'ID DE L'USER EN ATTENDANT
-                    createCandidatureEntry(userId, offreId, userId, userId);
+                    //createCandidatureEntry(userId, offreId, userId, userId);
+                    createCandidatureEntry(userId, offreId, cvFilename, lmFilename);
                 } else {
                     // Aucun CV ou LM sélectionné
                     Toast.makeText(getApplicationContext(), "Veuillez sélectionner un CV et une LM", Toast.LENGTH_SHORT).show();
@@ -154,7 +163,7 @@ public class Candidature extends Activity {
         }
     }
 
-    private void cvUploadFileToStorage(Uri fileUri) {
+    private void cvUploadFileToStorage(Uri fileUri, String cvFilename) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
             // L'utilisateur n'est pas connecté
@@ -167,8 +176,9 @@ public class Candidature extends Activity {
 
         // Créer un nom pour le fichier en utiliant l'identifiant de l'utilisateur
         // EN ATTENDANT : le fichier du CV et celui de la LM ont le même nom -> l'identifiant de l'utilisateur
-        String fileName = userId;
+        //String fileName = userId;
         //String fileName = UUID.randomUUID().toString();
+        String fileName = cvFilename;
 
         // Référence au fichier dans Firebase Storage
         StorageReference cvFileRef = cvStorageRef.child(fileName);
@@ -191,7 +201,7 @@ public class Candidature extends Activity {
                 });
     }
 
-    private void lmUploadFileToStorage(Uri fileUri){
+    private void lmUploadFileToStorage(Uri fileUri, String lmFilename){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
             // L'utilisateur n'est pas connecté
@@ -204,8 +214,9 @@ public class Candidature extends Activity {
 
         // Créer un nom pour le fichier en utiliant l'identifiant de l'utilisateur
         // EN ATTENDANT : le fichier du CV et celui de la LM ont le même nom -> l'identifiant de l'utilisateur
-        String fileName = userId;
+        //String fileName = userId;
         //String fileName = UUID.randomUUID().toString();
+        String fileName = lmFilename;
 
         // Référence au fichier dans Firebase Storage
         StorageReference lmFileRef = lmStorageRef.child(fileName);
