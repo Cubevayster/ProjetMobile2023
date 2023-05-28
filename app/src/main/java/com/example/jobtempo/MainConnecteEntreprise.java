@@ -23,7 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 public class MainConnecteEntreprise extends Activity {
 
     Button monCompte;
-    Button gestionOffres;
     Button deconnexion;
     Button ajoutOffre;
 
@@ -74,13 +73,6 @@ public class MainConnecteEntreprise extends Activity {
                 Intent intent = new Intent(getApplicationContext(), MonCompteEntreprise.class);
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        gestionOffres.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ???
             }
         });
 
