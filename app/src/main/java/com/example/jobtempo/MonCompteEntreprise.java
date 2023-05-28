@@ -94,7 +94,7 @@ public class MonCompteEntreprise extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MonCompteEntreprise.this, MainConnecte.class);
+                Intent intent = new Intent(MonCompteEntreprise.this, MainConnecteEntreprise.class);
                 startActivity(intent);
                 finish();
             }
